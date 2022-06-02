@@ -45,18 +45,6 @@ public class TextBoxTest {
         $("#react-select-4-input").setValue("Delhi").pressEnter();
         $("#submit").click();
 
-        $(".table-responsive").shouldHave(
-                text("Alex Egorov"),
-                text("Alex@Egorov.ru"),
-                text("Male"),
-                text("0123456789"),
-                text("21 March,1996"),
-                text("Arts"),
-                text("Sports"),
-                text("Toolsqa.jpg"),
-                text("Address 1"),
-                text("NCR Delhi")
-        );
 
         checkTable("Student Name", "Alex Egorov");
         checkTable("Student Email", "Alex@Egorov.ru");
