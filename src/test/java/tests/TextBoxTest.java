@@ -22,28 +22,28 @@ public class TextBoxTest {
 
     @Test
     void successfulTest() {
-        System.out.println("Started first test");
+//        System.out.println("Started first test");
         open("/automation-practice-form");
 //        executeJavaScript("$('footer').remove()");
 //        executeJavaScript("$('fixedban').remove()");
 
-        $("[id=firstName]").setValue("Alex");
-        $("[id=lastName]").setValue("Egorov");
-        $("[id=userEmail]").setValue("Alex@Egorov.ru");
+        $("#firstName").setValue("Alex");
+        $("#lastName").setValue("Egorov");
+        $("#userEmail").setValue("Alex@Egorov.ru");
         $("label[for=gender-radio-1]").click();
-        $("[id=userNumber]").setValue("0123456789");
-        $("[id=dateOfBirthInput]").click();
+        $("#userNumber").setValue("0123456789");
+        $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("March");
         $(".react-datepicker__year-select").selectOption("1996");
         $(".react-datepicker__day--021").click();
-        $("[id=subjectsInput]").sendKeys("A");
+        $("#subjectsInput").sendKeys("A");
         $(byText("Arts")).click();
         $("label[for=hobbies-checkbox-1]").click();
-        $("[id=uploadPicture]").uploadFile(new File("src\\test\\java\\tests\\Toolsqa.jpg"));
-        $("[id=currentAddress]").setValue("Address 1");
-        $("[id=react-select-3-input]").setValue("NCR").pressEnter();
-        $("[id=react-select-4-input]").setValue("Delhi").pressEnter();
-        $("[id=submit]").click();
+        $("#uploadPicture").uploadFromClasspath("Toolsqa.jpg");
+        $("#currentAddress").setValue("Address 1");
+        $("#react-select-3-input").setValue("NCR").pressEnter();
+        $("#react-select-4-input").setValue("Delhi").pressEnter();
+        $("#submit").click();
 
         $(".table-responsive").shouldHave(
                 text("Alex Egorov"),
@@ -57,6 +57,23 @@ public class TextBoxTest {
                 text("Address 1"),
                 text("NCR Delhi")
         );
-        System.out.println("Ended first test");
+
+        checkTable("Student Name", "Alex Egorov");
+        checkTable("Student Email", "Alex@Egorov.ru");
+        checkTable("Gender", "Male");
+        checkTable("Mobile", "0123456789");
+        checkTable("Date of Birth", "21 March,1996");
+        checkTable("Subjects", "Arts");
+        checkTable("Hobbies", "Sports");
+        checkTable("Picture", "Toolsqa.jpg");
+        checkTable("Address", "Address 1");
+        checkTable("State and City", "NCR Delhi");
+
     }
+
+    void checkTable(String key, String value) {
+        $(".table-responsive").$(byText(key))
+                .parent().shouldHave(text(value));
+    }
+
 }
