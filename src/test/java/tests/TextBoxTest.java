@@ -30,7 +30,7 @@ public class TextBoxTest {
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Egorov");
         $("#userEmail").setValue("Alex@Egorov.ru");
-        $("#genterWrapper").$(byText("Other")).click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("0123456789");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("March");
