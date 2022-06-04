@@ -38,7 +38,7 @@ public class TextBoxTest {
         $(".react-datepicker__day--021").click();
         $("#subjectsInput").sendKeys("A");
         $(byText("Arts")).click();
-        $("label[for=hobbies-checkbox-1]").click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("Toolsqa.jpg");
         $("#currentAddress").setValue("Address 1");
         $("#react-select-3-input").setValue("NCR").pressEnter();
