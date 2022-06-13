@@ -1,49 +1,85 @@
 package pages;
 
+import pages.components.CalendarComponents;
+import pages.components.ResultsTableComponent;
+
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationFormPage {
 
-    public void setFirstName(String value)  {
+    public CalendarComponents calendarComponents = new CalendarComponents();
+    public ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
+
+
+    public RegistrationFormPage openPage()  {
+        open("/automation-practice-form");
+         executeJavaScript("$('footer').remove()");
+         executeJavaScript("$('fixedban').remove()");
+         return this;
+    }
+
+    public RegistrationFormPage setFirstName(String value)  {
         $("#firstName").setValue(value);
+        return this;
     }
 
-    public void setLastName(String value)  {
+    public RegistrationFormPage setLastName(String value)  {
         $("#lastName").setValue(value);
+        return this;
     }
 
-     public void setEmail(String value)  {
+     public RegistrationFormPage setEmail(String value)  {
         $("#userEmail").setValue(value);
+         return this;
     }
 
-     public void setGender(String value)  {
+     public RegistrationFormPage setGender(String value)  {
          $("#genterWrapper").$(byText(value)).click();
+         return this;
     }
 
 
-     public void setNumber(String value)  {
+     public RegistrationFormPage setNumber(String value)  {
          $("#userNumber").setValue(value);
+         return this;
     }
 
-     public void setDateOfBirth(String value)  {
+     public RegistrationFormPage setDateOfBirth(String day, String month, String year)  {
          $("#dateOfBirthInput").click();
-         $(".react-datepicker__month-select").selectOption("March");
-         $(".react-datepicker__year-select").selectOption("1996");
-         $(".react-datepicker__day--021").click();
+         calendarComponents.setDate(day, month, year);
+
+         return this;
     }
 
-    public void setInput(String value)  {
+    public RegistrationFormPage setInput(String value)  {
         $("#subjectsInput").sendKeys(value);
         $(byText("Arts")).click();
+        return this;
     }
 
 
-    public void setHobbies(String value)  {
+    public RegistrationFormPage setHobbies(String value)  {
         $("#hobbiesWrapper").$(byText(value)).click();
+        return this;
     }
 
+    public RegistrationFormPage uploadFile(String value)  {
+        $("#uploadPicture").uploadFromClasspath(value);
+        return this;
+    }
 
+    public RegistrationFormPage setAddress(String value)  {
+        $("#currentAddress").setValue(value);
+        return this;
+    }
+
+    public RegistrationFormPage setState(String value1,String value2)  {
+        $("#react-select-3-input").setValue(value1).pressEnter();
+        $("#react-select-4-input").setValue(value2).pressEnter();
+        $("#submit").click();
+        return this;
+    }
 
 
 

@@ -10,23 +10,14 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class TextBoxTestForPages {
+public class TextBoxTestForPages  extends TestBase {
 
-    RegistrationFormPage registrationFormPage= new RegistrationFormPage();
 
-    @BeforeAll
-    static void beforeall() {
-        Configuration.baseUrl="https://demoqa.com";
-        Configuration.browserSize="1920x1080";
-
-    }
 
     @Test
     void successfulTest() {
 
-        open("/automation-practice-form");
-//        executeJavaScript("$('footer').remove()");
-//        executeJavaScript("$('fixedban').remove()");
+        registrationFormPage.openPage();
 
         //$("#firstName").setValue("Alex");
         registrationFormPage.setFirstName("Alex");
@@ -42,17 +33,20 @@ public class TextBoxTestForPages {
         //$(".react-datepicker__month-select").selectOption("March");
         //$(".react-datepicker__year-select").selectOption("1996");
         //$(".react-datepicker__day--021").click();
-        registrationFormPage.setDateOfBirth("");
+        registrationFormPage.setDateOfBirth("21", "March", "1996");
         //$("#subjectsInput").sendKeys("A");
         //$(byText("Arts")).click();
         registrationFormPage.setInput("A");
         //$("#hobbiesWrapper").$(byText("Sports")).click();
         registrationFormPage.setHobbies("Sports");
-        $("#uploadPicture").uploadFromClasspath("Toolsqa.jpg");
-        $("#currentAddress").setValue("Address 1");
-        $("#react-select-3-input").setValue("NCR").pressEnter();
-        $("#react-select-4-input").setValue("Delhi").pressEnter();
-        $("#submit").click();
+        //$("#uploadPicture").uploadFromClasspath("Toolsqa.jpg");
+        registrationFormPage.uploadFile("Toolsqa.jpg");
+       // $("#currentAddress").setValue("Address 1");
+        registrationFormPage.setAddress("Address 1");
+        //$("#react-select-3-input").setValue("NCR").pressEnter();
+        //$("#react-select-4-input").setValue("Delhi").pressEnter();
+        //$("#submit").click();
+        registrationFormPage.setState("NCR","Delhi");
 
 
         checkTable("Student Name", "Alex Egorov");
