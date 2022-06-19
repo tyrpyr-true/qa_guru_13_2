@@ -52,9 +52,9 @@ public class RegistrationFormPage {
          return this;
     }
 
-    public RegistrationFormPage setInput(String value)  {
-        $("#subjectsInput").sendKeys(value);
-        $(byText("Arts")).click();
+    public RegistrationFormPage setInput(String value1, String value2)  {
+        $("#subjectsInput").sendKeys(value1);
+        $(byText(value2)).click();
         return this;
     }
 

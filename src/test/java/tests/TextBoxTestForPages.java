@@ -36,7 +36,7 @@ public class TextBoxTestForPages  extends TestBase {
         registrationFormPage.setDateOfBirth("21", "March", "1996");
         //$("#subjectsInput").sendKeys("A");
         //$(byText("Arts")).click();
-        registrationFormPage.setInput("A");
+        registrationFormPage.setInput("A", "Arts");
         //$("#hobbiesWrapper").$(byText("Sports")).click();
         registrationFormPage.setHobbies("Sports");
         //$("#uploadPicture").uploadFromClasspath("Toolsqa.jpg");

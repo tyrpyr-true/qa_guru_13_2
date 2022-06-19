@@ -24,7 +24,7 @@ public class RegistrationFormWithTestDataTests extends TestBase {
         registrationFormPage.setGender("Male");
         registrationFormPage.setNumber("0123456789");
         registrationFormPage.setDateOfBirth("21", "March", "1996");
-        registrationFormPage.setInput("A");
+        registrationFormPage.setInput("A", "Arts");
         registrationFormPage.setHobbies("Sports");
         registrationFormPage.uploadFile("Toolsqa.jpg");
         registrationFormPage.setAddress("Address 1");
