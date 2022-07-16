@@ -3,6 +3,7 @@ package pages;
 import pages.components.CalendarComponents;
 import pages.components.ResultsTableComponent;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -74,12 +75,20 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage setState(String value1,String value2)  {
-        $("#react-select-3-input").setValue(value1).pressEnter();
-        $("#react-select-4-input").setValue(value2).pressEnter();
+    public RegistrationFormPage setState(String state,String city)  {
+        $("#react-select-3-input").setValue(state).pressEnter();
+        $("#react-select-4-input").setValue(city).pressEnter();
         $("#submit").click();
         return this;
     }
+
+
+    public RegistrationFormPage checkTable(String key, String value) {
+        $(".table-responsive").$(byText(key))
+                .parent().shouldHave(text(value));
+        return this;
+    }
+
 
 
 

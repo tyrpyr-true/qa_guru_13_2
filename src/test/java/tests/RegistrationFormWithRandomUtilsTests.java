@@ -14,6 +14,8 @@ public class RegistrationFormWithRandomUtilsTests extends TestBase {
     @Test
     void successfulTest() {
 
+
+        String fileName = "Toolsqa.jpg";
         String firstName =  getRandomString(10);
         String lastName =  getRandomString(10);
         String email= getRandomEmail();
@@ -36,27 +38,23 @@ public class RegistrationFormWithRandomUtilsTests extends TestBase {
         registrationFormPage.setDateOfBirth(dateOfBirth[0], dateOfBirth[1], dateOfBirth[2]);
         registrationFormPage.setInput(inputSubject[0], inputSubject[1]);
         registrationFormPage.setHobbies(hobby);
-        registrationFormPage.uploadFile("Toolsqa.jpg");
+        registrationFormPage.uploadFile(fileName);
         registrationFormPage.setAddress(address);
         registrationFormPage.setState(stateAndCity[0],stateAndCity[1]);
 
 
-        checkTable("Student Name", firstName+' '+lastName);
-        checkTable("Student Email", email);
-        checkTable("Gender", gender);
-        checkTable("Mobile", phone);
-        checkTable("Date of Birth", dateOfBirth[0]+" "+dateOfBirth[1]+","+dateOfBirth[2]);
-        checkTable("Subjects", inputSubject[1]);
-        checkTable("Hobbies", hobby);
-        checkTable("Picture", "Toolsqa.jpg");
-        checkTable("Address", address);
-        checkTable("State and City", stateAndCity[0]+" "+stateAndCity[1]);
+         registrationFormPage.checkTable("Student Name", firstName+' '+lastName);
+         registrationFormPage.checkTable("Student Email", email);
+         registrationFormPage.checkTable("Gender", gender);
+         registrationFormPage.checkTable("Mobile", phone);
+         registrationFormPage.checkTable("Date of Birth", dateOfBirth[0]+" "+dateOfBirth[1]+","+dateOfBirth[2]);
+         registrationFormPage.checkTable("Subjects", inputSubject[1]);
+         registrationFormPage.checkTable("Hobbies", hobby);
+         registrationFormPage.checkTable("Picture", fileName);
+         registrationFormPage.checkTable("Address", address);
+         registrationFormPage.checkTable("State and City", stateAndCity[0]+" "+stateAndCity[1]);
 
     }
 
-    void checkTable(String key, String value) {
-        $(".table-responsive").$(byText(key))
-                .parent().shouldHave(text(value));
-    }
 
 }
