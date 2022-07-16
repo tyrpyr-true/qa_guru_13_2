@@ -14,7 +14,6 @@ public class RegistrationFormWithRandomUtilsTests extends TestBase {
     @Test
     void successfulTest() {
 
-
         String fileName = "Toolsqa.jpg";
         String firstName =  getRandomString(10);
         String lastName =  getRandomString(10);
